@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WFMautostatus
@@ -16,8 +14,10 @@ namespace WFMautostatus
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length > 1 && args.Contains("--silent")) silentLaunch = true;
-            // \HKEY_USERS\S-1-5-21-1133526535-3252321873-4106936650-1001\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+            if (args.Length > 0 && Array.IndexOf(args, "--silent") >= 0)
+            {
+                silentLaunch = true;
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TrayApp());
